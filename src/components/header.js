@@ -1,9 +1,7 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-var Header = React.createClass({
-  render: function() {
-    return <h1>hello</h1>;
+export default class Header extends Component {
+  render() {
+    return <h1>{this.props.name}</h1>
   }
-});
-
-module.exports = Header;
+}
