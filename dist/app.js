@@ -21013,18 +21013,20 @@ var Square = function (_Component) {
       return Object.keys(this.state.items).map(function (rowNumber) {
         return _react2.default.createElement(
           'div',
-          { className: "row " + rowNumber, key: rowNumber },
-          _this2.renderSquare(_this2.state.items[rowNumber])
+          { className: "row " + rowNumber },
+          _this2.renderSquare(_this2.state.items[rowNumber], rowNumber)
         );
       });
     }
   }, {
     key: 'renderSquare',
-    value: function renderSquare(item) {
+    value: function renderSquare(item, row) {
       var _this3 = this;
 
       return item.map(function (num) {
         var grid = void 0;
+        var squareValue = item.indexOf(num);
+        var stuff = _this3.state.items[row].indexOf(num);
 
         if (item == _this3.state.items.row3) {
           grid = 'square-3';
@@ -21032,10 +21034,18 @@ var Square = function (_Component) {
           grid = 'square-6';
         }
 
-        return _react2.default.createElement('div', {
-          className: "square " + grid,
-          id: "square-" + num,
-          key: num });
+        return _react2.default.createElement(
+          'div',
+          { className: "square " + grid, id: "square-" + num },
+          console.log(stuff),
+          _react2.default.createElement('input', {
+            type: 'number',
+            value: item[squareValue],
+            onChange: function onChange(event) {
+              return _this3.setState({ stuff: event.target.value });
+            }
+          })
+        );
       });
     }
   }, {

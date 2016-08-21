@@ -18,6 +18,12 @@ export default class Square extends Component {
       }
     }
   }
+
+  renderRows() {
+    return Object.keys(this.state.items).map(rowNumber => {
+      return <div className={"row " + rowNumber}>{this.renderSquare(this.state.items[rowNumber], rowNumber)}</div>
+    })
+  }
   
   renderSquare(item, row) {
     return item.map(num => {
