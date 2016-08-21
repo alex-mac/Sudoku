@@ -20949,7 +20949,7 @@ var Solve = function (_Component) {
       return _react2.default.createElement(
         "button",
         { className: "btn" },
-        "SOLVE"
+        "SOLVE ME"
       );
     }
   }]);
