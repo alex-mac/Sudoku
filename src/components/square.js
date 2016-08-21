@@ -19,19 +19,11 @@ export default class Square extends Component {
     }
   }
   
-  renderRows() {
-    return Object.keys(this.state.items).map(rowNumber => {
-      return (
-        <div className={"row " + rowNumber} key={rowNumber}>
-          {this.renderSquare(this.state.items[rowNumber])}
-        </div>
-      )
-    })
-  }
-  
-  renderSquare(item) {
+  renderSquare(item, row) {
     return item.map(num => {
       let grid;
+      let squareValue = item.indexOf(num);
+      let stuff = this.state.items[row].indexOf(num);
       
       if (item == this.state.items.row3) {
         grid = 'square-3';
@@ -41,10 +33,13 @@ export default class Square extends Component {
       }
       
       return (
-        <div 
-          className={"square " + grid} 
-          id={"square-" + num} 
-          key={num} >
+        <div className={"square " + grid} id={"square-" + num}>
+          {console.log(stuff)}
+          <input 
+            type="number"
+            value={item[squareValue]}
+            onChange={(event => this.setState({stuff: event.target.value}))}
+            />
         </div>  
       )
     })
